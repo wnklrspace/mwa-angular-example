@@ -40,6 +40,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "defaultConfiguration": "development",
+          "options": {
+            "buildTarget": "demo:build:development"
+          },
           "configurations": {
             "production": {
               "buildTarget": "demo:build:production"
@@ -54,5 +58,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
