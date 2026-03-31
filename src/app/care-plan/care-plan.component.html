@@ -1,0 +1,49 @@
+<section class="panel">
+  <div class="panel-heading">
+    <div>
+      <p class="eyebrow">Selected follow-ups</p>
+      <h2>Care plan</h2>
+    </div>
+    <p class="muted">Each click adds or removes a visit, just like the original cart demo.</p>
+  </div>
+
+  @if (items().length === 0) {
+    <div class="empty-state">
+      No services selected yet. Add a virtual visit or therapy check-in to build the demo plan.
+    </div>
+  } @else {
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Copay</th>
+            <th>Visits</th>
+            <th aria-label="Action"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of items(); track item.service.id) {
+            <tr>
+              <td>
+                <div class="service-name">{{ item.service.name }}</div>
+                <div class="muted">{{ item.service.team }}</div>
+              </td>
+              <td>${{ item.service.copay }}</td>
+              <td>{{ item.visits }}</td>
+              <td>
+                <button
+                  class="action-button secondary"
+                  type="button"
+                  (click)="removeService.emit(item.service.id)"
+                >
+                  Remove visit
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>

@@ -1,0 +1,41 @@
+<section class="panel">
+  <div class="panel-heading">
+    <div>
+      <p class="eyebrow">Recommended services</p>
+      <h2>Next-step care options</h2>
+    </div>
+    <p class="muted">Choose a few low-friction follow-ups to demonstrate state updates.</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Team</th>
+          <th>Time</th>
+          <th>Copay</th>
+          <th aria-label="Action"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (service of services(); track service.id) {
+          <tr>
+            <td>
+              <div class="service-name">{{ service.name }}</div>
+              <div class="muted">{{ service.note }}</div>
+            </td>
+            <td>{{ service.team }}</td>
+            <td>{{ service.duration }}</td>
+            <td>${{ service.copay }}</td>
+            <td>
+              <button class="action-button" type="button" (click)="addService.emit(service)">
+                Add to plan
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

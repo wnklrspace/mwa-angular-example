@@ -1,0 +1,21 @@
+<main class="app-shell">
+  <app-header
+    [frameworkLabel]="appContent.frameworkLabel"
+    [title]="appContent.title"
+    [description]="appContent.description"
+    [patientName]="appContent.patientName"
+    [selectedServicesCount]="items().length"
+    [plannedVisits]="plannedVisits()"
+  ></app-header>
+
+  <section class="content-grid">
+    <app-care-catalog
+      [services]="careServices"
+      (addService)="carePlanStore.addService($event)"
+    ></app-care-catalog>
+    <app-care-plan
+      [items]="items()"
+      (removeService)="carePlanStore.removeService($event)"
+    ></app-care-plan>
+  </section>
+</main>
